@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+ app:
+   build: .
+   ports:
+     - "8080:8080"
+   networks:
+     - e-network
+ postgres:
+   image: postgres:latest
+   environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Blackey185850@
+      POSTGRES_DB: sidhant
+   ports:
+   - 5433:5432
+   networks:
+     - e-network
+   volumes:
+     - postgres-e-data:/var/lib/postgresql/data
+
+networks:
+  e-network:
+    driver: bridge
+
+volumes:
+  postgres-e-data:
+
